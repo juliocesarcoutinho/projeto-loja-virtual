@@ -1,5 +1,6 @@
 package br.com.toponeweb.projetolojavirtual.model;
 
+import br.com.toponeweb.projetolojavirtual.enums.TipoEndereco;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -38,6 +39,9 @@ public class Endereco implements Serializable {
     @ManyToOne(targetEntity = Pessoa.class)
     @JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
     private Pessoa pessoa;
+
+    @Enumerated(EnumType.STRING)
+    private TipoEndereco tipoEndereco;
 
     @Override
     public boolean equals(Object o) {
