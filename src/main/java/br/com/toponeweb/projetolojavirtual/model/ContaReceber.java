@@ -33,7 +33,7 @@ public class ContaReceber implements Serializable {
     private BigDecimal valorDesconto;
 
     @ManyToOne(targetEntity = Pessoa.class) /* Muitas contas para uma pessoa*/
-    @JoinColumn(name = "pessoa_id", nullable = false,foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
+    @JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
     private Pessoa pessoa;
 
     @Override
