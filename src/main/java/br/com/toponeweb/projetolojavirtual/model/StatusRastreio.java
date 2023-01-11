@@ -21,6 +21,10 @@ public class StatusRastreio implements Serializable {
     private String estado;
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "venda_compra_virt_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "venda_compra_virt_fk"))
+    private VendaCompraLojaVirtual vendaCompraLojaVirtual;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
