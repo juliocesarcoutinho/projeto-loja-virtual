@@ -12,6 +12,7 @@ import java.util.function.BiConsumer;
 @Entity
 @Getter
 @Setter
+@Table(name = "cupom_desconto")
 @SequenceGenerator(name = "seq_cupom_desconto", sequenceName = "seq_cupom_desconto", allocationSize = 1, initialValue = 1)
 
 public class CupomDesconto implements Serializable {
