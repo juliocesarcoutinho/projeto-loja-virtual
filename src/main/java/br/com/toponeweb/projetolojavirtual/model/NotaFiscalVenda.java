@@ -27,6 +27,10 @@ public class NotaFiscalVenda implements Serializable {
     @Column(columnDefinition = "text")
     private String pdf;
 
+    @OneToOne
+    @JoinColumn(name = "venda_compra_loja_virt_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "venda_compra_loja_virt_fk"))
+    private VendaCompraLojaVirtual vendaCompraLojaVirtual;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
