@@ -27,7 +27,7 @@ public class Endereco implements Serializable {
 
     @Column(nullable = false, length = 50)
     private String numero;
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String complemento;
     @Column(nullable = false, length = 50)
     private String bairro;
@@ -41,6 +41,7 @@ public class Endereco implements Serializable {
     private Pessoa pessoa;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TipoEndereco tipoEndereco;
 
     @Override
