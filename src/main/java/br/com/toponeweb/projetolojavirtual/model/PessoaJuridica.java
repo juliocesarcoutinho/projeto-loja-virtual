@@ -18,7 +18,6 @@ public class PessoaJuridica extends Pessoa{
     private String cnpj;
     @Column(nullable = false, length = 15)
     private String ie;
-    @Column(nullable = false)
     private String inscMunicipal;
     @Column(nullable = false, length = 60)
     private String nomeFantasia;
