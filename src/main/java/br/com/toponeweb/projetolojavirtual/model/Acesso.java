@@ -1,14 +1,11 @@
 package br.com.toponeweb.projetolojavirtual.model;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
-import jakarta.persistence.SequenceGenerator;
-import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Getter
