@@ -41,7 +41,7 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 		Acesso acesso1 = acessoRepository.findById(acesso.getId()).get();
 		assertEquals(acesso.getId(), acesso1.getId());
 
-		/*tETSE DE DELETE*/
+		/*TESTE DE DELETE*/
 
 		acessoRepository.deleteById(acesso1.getId());
 		acessoRepository.flush(); /*Roda a SQL no banco*/
