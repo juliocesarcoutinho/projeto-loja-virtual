@@ -1,5 +1,6 @@
 package br.com.toponeweb.projetolojavirtual.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class Acesso implements GrantedAuthority {
         return id.hashCode();
     }
 
+    @JsonIgnore
     @Override
     public String getAuthority() {
         return this.descricao;
