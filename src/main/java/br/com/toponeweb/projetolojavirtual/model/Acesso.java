@@ -1,21 +1,19 @@
 package br.com.toponeweb.projetolojavirtual.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.io.Serializable;
-
 @Entity
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
 @Table(name = "acesso")
-@SequenceGenerator(name = "acesso", sequenceName = "acesso", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "seq_acesso", sequenceName = "seq_acesso", initialValue = 1, allocationSize = 1)
 public class Acesso implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_acesso")
@@ -25,7 +23,25 @@ public class Acesso implements GrantedAuthority {
     private String descricao; /*Acesso*/
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Acesso acesso = (Acesso) o;
+
+        return id.equals(acesso.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @JsonIgnore
+    @Override
     public String getAuthority() {
         return this.descricao;
     }
+
+
 }
