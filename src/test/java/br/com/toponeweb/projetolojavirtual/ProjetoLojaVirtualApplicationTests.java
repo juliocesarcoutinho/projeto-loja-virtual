@@ -4,6 +4,7 @@ import br.com.toponeweb.projetolojavirtual.controller.AcessoController;
 import br.com.toponeweb.projetolojavirtual.model.Acesso;
 import br.com.toponeweb.projetolojavirtual.repository.AcessoRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import junit.framework.TestCase;
 import org.junit.Ignore;
@@ -18,6 +19,7 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @SpringBootTest(classes = ProjetoLojaVirtualApplication.class)
@@ -162,6 +164,24 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 						.contentType(MediaType.APPLICATION_JSON));
 
 		assertEquals(200, + retornoApi.andReturn().getResponse().getStatus() );
+
+		List<Acesso> acessoList = objectMapper.readValue(
+				retornoApi.andReturn()
+						.getResponse()
+						.getContentAsString(), new TypeReference<List<Acesso>>() {
+					@Override
+					public Type getType() {
+						return super.getType();
+					}
+				});
+
+		assertEquals(1, acessoList.size());
+		assertEquals(acesso.getDescricao(), acessoList.get(0).getDescricao());
+
+
+
+
+		acessoRepository.deleteById(acesso.getId());
 
 
 
