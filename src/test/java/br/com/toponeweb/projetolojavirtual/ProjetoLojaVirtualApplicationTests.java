@@ -66,6 +66,7 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 
 
 	}
+	/*=====================================================================================================*/
 	/*Teste Mock para Deletar acesso*/
 	@Test
 	public void testApiRestDeleteAcesso() throws Exception {
@@ -98,7 +99,8 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 
 
 	}
-
+	/*=====================================================================================================*/
+	/*Teste Mock para deletar acesso por id*/
 	@Test
 	public void testApiRestDeleteIdAcesso() throws Exception {
 		DefaultMockMvcBuilder builder = MockMvcBuilders.webAppContextSetup(this.wac);
@@ -122,6 +124,8 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 		assertEquals(200, + retornoApi.andReturn().getResponse().getStatus() );
 
 	}
+	/*=====================================================================================================*/
+	/*Teste Mock para deletar acesso por id*/
 	@Test
 	public void listarAcessoId() throws Exception {
 		DefaultMockMvcBuilder builder = MockMvcBuilders.webAppContextSetup(this.wac);
@@ -129,7 +133,7 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 
 		Acesso acesso = new Acesso();
 		acesso.setDescricao("ROLE_LISTAR_ID");
-		acesso =acessoRepository.save(acesso);
+		acesso = acessoRepository.save(acesso);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 
@@ -146,6 +150,8 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 		assertEquals(acesso.getId(), acessoRetorno.getId());
 
 	}
+	/*=====================================================================================================*/
+	/*Teste com Mock para listar acesso por descrição*/
 	@Test
 	public void listarAcessoDesc() throws Exception {
 		DefaultMockMvcBuilder builder = MockMvcBuilders.webAppContextSetup(this.wac);
@@ -177,19 +183,8 @@ class ProjetoLojaVirtualApplicationTests extends TestCase {
 
 		assertEquals(1, acessoList.size());
 		assertEquals(acesso.getDescricao(), acessoList.get(0).getDescricao());
-
-
-
-
 		acessoRepository.deleteById(acesso.getId());
-
-
-
 	}
-
-
-
-
 
 	@Test
 	public void textCadastraAcesso() {
